@@ -1,0 +1,261 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=us-ascii" />
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1" />
+
+    <title>Game</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/animations.css" />
+    <link rel="stylesheet" type="text/css" href="css/theme.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/spelling-game.js"></script>
+    
+    
+</head>
+
+<body>
+    <div class="spelling circus" id="game-container">
+       <div class="game standby">
+            <div class="background-container">            
+                <div class="element-1"></div>
+                <div class="element-2"></div>
+                <div class="element-3"></div>
+                <div class="element-4">
+                    <div class="inner-element-1"></div>
+                    <div class="inner-element-2"></div>
+                    <div class="inner-element-3"></div> 
+                </div>
+                <div class="element-5"></div>
+                <div class="element-6">
+                    <div class="inner-element-1"></div>
+                </div>
+                <div class="element-7"></div>
+                <div class="element-8"></div>
+            </div>
+
+            <div class="standby-page-elements">
+                <div class="bg-music-controls-wrapper">
+                    <a id="play" class="background-music touch-control">
+                    	<span class="icon"></span>
+                    </a>
+                </div>
+                <a class="start-btn-wrapper touch-control">
+	                <span class="start-btn">
+	                	<span class="btn-label">Start</span>
+	                </span> 
+	                <span class="start-btn-shadow"></span>
+                </a>
+            </div>
+
+            <div class="active-page-elements">
+                <div class="grid-container">
+                    <div class="reveal-wrapper"></div>
+
+                    <div class="table-container"></div>
+                </div>
+                
+                <div class="hint-container">
+                    <a id="pickNext" class="next-question touch-control">Next Word</a>
+                    <a id="pickNext" class="next-auto touch-control"></a>
+	
+	                <div class="hint-img-wrapper">
+	                    <img src="" id="hintPic" class="pic-hint"/>
+	                    <span id="hintPicTitle" title=""></span>
+	                    
+	                    <div class="replay-sound touch-control">
+	                    	<span class="icon"></span>
+	                    </div>
+	                </div>
+                </div>
+
+                <div class="tiles-wrapper">
+                    <div class="drag touch-control player-tiles two" data-letter="a" id="drag1">
+                        <span>a</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="b" id="drag2">
+                        <span>b</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="c" id="drag3">
+                        <span>c</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="d" id="drag4">
+                        <span>d</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles two" data-letter="e" id="drag5">
+                        <span>e</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="f" id="drag6">
+                        <span>f</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="g" id="drag7">
+                        <span>g</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="h" id="drag8">
+                        <span>h</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles two" data-letter="i" id="drag9">
+                        <span>i</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="j" id="drag10">
+                        <span>j</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="k" id="drag11">
+                        <span>k</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="l" id="drag12">
+                        <span>l</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="m" id="drag13">
+                        <span>m</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="n" id="drag14">
+                        <span>n</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles two" data-letter="o" id="drag15">
+                        <span>o</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="p" id="drag16">
+                        <span>p</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="q" id="drag17">
+                        <span>q</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="r" id="drag18">
+                        <span>r</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="s" id="drag19">
+                        <span>s</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="t" id="drag20">
+                        <span>t</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles two" data-letter="u" id="drag21">
+                        <span>u</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="v" id="drag22">
+                        <span>v</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="w" id="drag23">
+                        <span>w</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="x" id="drag24">
+                        <span>x</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="y" id="drag25">
+                        <span>y</span>
+                    </div>
+
+                    <div class="drag touch-control player-tiles" data-letter="z" id="drag26">
+                        <span>z</span>
+                    </div>
+                </div>
+                
+                <div class="helper">
+					<div class="message">
+						<p>Hello! One of my circus friends has gone missing. Spell the words to help me find them.</p>
+						<div class="close-message touch-control">
+							<span class="btn-label">Go</span>
+						</div>
+					</div>
+                	<div class="helper-character">
+                		<div class="element-1"></div>
+                	</div>
+                    <div class="score"></div>
+               	</div>
+
+                <div class="game-over-elements">
+                    <input class="restart-btn" type="button" value="Restart" />
+
+                    <div class="end-message"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden style="display:none;">
+	       <div class="audio-wrapper">
+				<audio id="hintSound" preload="auto">
+				
+				</audio>
+				
+				<audio id="successSound" preload="auto">
+					<source src="sounds/games-sound-fx/cashtill.ogg" type='audio/ogg; codecs="vorbis"'>
+					<source src="sounds/games-sound-fx/cashtill.mp3" type='audio/mpeg; codecs="mp3"'>
+				</audio>
+				
+				<audio id="failSound" preload="auto">
+					<source src="sounds/games-sound-fx/electric.ogg" type='audio/ogg; codecs="vorbis"'>
+					<source src="sounds/games-sound-fx/electric.mp3" type='audio/mpeg; codecs="mp3"'>
+				</audio>
+		
+				<audio id="moveSound" preload="auto">
+					<source src="sounds/games-sound-fx/throw.ogg" type='audio/ogg; codecs="vorbis"'>
+					<source src="sounds/games-sound-fx/throw.mp3" type='audio/mpeg; codecs="mp3"'>
+				</audio>
+				
+				<audio id="hitSound" preload="auto">
+					<source src="sounds/games-sound-fx/hit.ogg" type='audio/ogg; codecs="vorbis"'>
+					<source src="sounds/games-sound-fx/hit.mp3" type='audio/mpeg; codecs="mp3"'>
+				</audio>
+				
+				<audio id="missSound" preload="auto">
+					<source src="sounds/games-sound-fx/miss.ogg" type='audio/ogg; codecs="vorbis"'>
+					<source src="sounds/games-sound-fx/miss.mp3" type='audio/mpeg; codecs="mp3"'>
+				</audio>
+				   
+				<audio id="audio-bg">
+					<source src="sounds/games-sound-fx/BGmusic.ogg" type='audio/ogg; codecs="vorbis"'>
+					<source src="sounds/games-sound-fx/BGmusic.mp3" type='audio/mpeg; codecs="mp3"'>
+				</audio>
+				
+				<a href="javascript:play_multi_sound('successSound');"></a>
+		        <a href="javascript:play_multi_sound('failSound');"></a>
+		        <a href="javascript:play_multi_sound('moveSound');"></a>
+		        <a href="javascript:play_multi_sound('hitSound');"></a>
+		        <a href="javascript:play_multi_sound('missSound');"></a>
+		        <a href="javascript:play_multi_sound('audio-bg');"></a> 
+			</div>
+			
+	 						<div class="hidden" style="display:none;">
+	 						<ul id="wordlist" data-attempt-number="2" data-population-number="6" data-completion-number="2" data-grid-size="large">
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/black.png" data-word="black"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/blue.png" data-word="blue"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/brown.png" data-word="brown"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/grey.png" data-word="grey"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/green.png" data-word="green"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/orange.png" data-word="orange"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/pink.png" data-word="pink"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/purple.png" data-word="purple"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/red.png" data-word="red"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/white.png" data-word="white"></li>
+							    <li data-audio="" data-hint="What colour is this?" data-pic="images/words/yellow.png" data-word="yellow"></li>
+							</ul>
+		</div>
+	</div>
+</body>
+</html>

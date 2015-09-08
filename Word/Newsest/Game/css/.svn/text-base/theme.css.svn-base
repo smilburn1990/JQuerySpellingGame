@@ -1,0 +1,1028 @@
+@import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
+
+/* Resets */
+
+#game-container a {
+	display: block;
+}
+
+#game-container table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End Resets */
+
+#game-container {
+	cursor: url($context/images/primary/nursery/cursor.cur), url($context/images/primary/nursery/cursor.png), auto;
+}
+
+#game-container a {
+	cursor: url($context/images/primary/nursery/handcursor.cur), url($context/images/primary/nursery/handcursor.png), auto;
+}
+ 	
+#game-container {
+    border-radius: 18px 18px 18px 18px;
+    height: 605px;
+    margin: 30px auto;
+    overflow: hidden;
+    position: relative;
+    width: 945px;
+}
+#game-container, #game-container * {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#game-container .game {
+    background: none repeat scroll 0 0 transparent;
+    border-color: rgba(255, 255, 255, 0.54) rgba(255, 255, 255, 0.38);
+    border-image: none;
+    border-radius: 18px 18px 18px 18px;
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
+    overflow: hidden;
+    position: static;
+    width: 100%;
+}
+#game-container .game:after {
+    border-radius: 18px 18px 18px 18px;
+    bottom: 0;
+    box-shadow: 0 0 7px rgba(1, 1, 1, 0.8) inset;
+    content: " ";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#game-container .game .background-container {
+	border-radius: 18px 18px 18px 18px;
+    height: 100%;
+	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+    overflow: hidden;
+    position: static;
+    width: 100%;
+}
+#game-container .background-container > div {
+    border-radius: 18px 18px 18px 18px;
+    bottom: -1px;
+    height: 100%;
+    left: 1px;
+    position: absolute;
+    right: -1px;
+    top: 1px;
+    width: 100%;
+}
+#game-container .background-container .element-1 {
+    background: url("../images/sky_clouds.png") no-repeat scroll center top transparent;
+}
+#game-container .background-container .element-2 {
+    background: url("../images/static_objects.png") no-repeat scroll center top transparent;
+    -webkit-transition: all 3s ease-in-out 2s;
+	-moz-transition: all 3s ease-in-out 2s;
+	transition: all 3s ease-in-out 2s;
+	opacity: 1;
+}
+#game-container .active .background-container .element-2 {
+	opacity: 0;
+}
+#game-container .background-container .element-3 {
+    background: url("../images/static_objects_faded.png") no-repeat scroll center top transparent;
+    -webkit-transition: opacity 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s;
+	opacity: 0;
+}
+#game-container .active .background-container .element-3 {
+	opacity: 1;
+}
+#game-container .background-container .element-4 .inner-element-1 {
+    background: url("../images/wheel.png") no-repeat scroll 0 0 transparent;
+    height: 255px;
+    left: -85px;
+    position: absolute;
+    top: 105px;
+    width: 255px;
+    -webkit-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	visibility: visible;
+	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	animation-play-state: paused;
+}
+#game-container:hover .background-container .element-4 .inner-element-1 {
+	-webkit-animation-play-state: running;
+	-moz-animation-play-state: running;
+	animation-play-state: running;
+    -webkit-animation: rotate 12s infinite 2s;
+	-moz-animation: rotate 120s infinite 2s;
+	animation: rotate 120s infinite 2s;
+	-webkit-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	visibility: visible;
+	opacity: 1;
+}
+#game-container:hover .active .background-container .element-4 .inner-element-1 {
+	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	animation-play-state: paused;
+}
+#game-container .active .background-container .element-4 .inner-element-1 {
+	opacity: 0;
+	visibility: hidden;
+}
+
+#game-container .background-container .element-4 .inner-element-2 {
+    background: url("../images/red_flag.png") no-repeat scroll 0 0 transparent;
+    height: 17px;
+    position: absolute;
+    right: 14px;
+    top: 183px;
+    width: 33px;
+    -webkit-animation: flag1 .8s steps(5, end) infinite;
+    -moz-animation: flag1 .8s steps(5, end) infinite;
+    animation: flag1 .8s steps(5, end) infinite;
+    -webkit-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	visibility: visible;
+	opacity: 1;
+}
+#game-container .active .background-container .element-4 .inner-element-2 {
+	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	animation-play-state: paused;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#game-container .background-container .element-4 .inner-element-3 {
+    background: url("../images/blue_flag.png") no-repeat scroll 0 0 transparent;
+    height: 11px;
+    position: absolute;
+    right: 102px;
+    top: 245px;
+    width: 22px;
+    -webkit-animation: flag2 .8s steps(5, end) infinite;
+    -moz-animation: flag2 .8s steps(5, end) infinite;
+    animation: flag2 .8s steps(5, end) infinite;
+    -webkit-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s, visibility 3s ease-in-out 2s;
+	visibility: visible;
+	opacity: 1;
+}
+#game-container .active .background-container .element-4 .inner-element-3 {
+	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	animation-play-state: paused;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#game-container .background-container .element-5 {
+	background: url("../images/fence_grass.png") no-repeat scroll center bottom transparent;
+}
+#game-container .background-container .element-6 .inner-element-1 {
+    background: url("../images/logos.png") no-repeat scroll center bottom transparent;
+    height: 245px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 14px;
+    width: 630px;
+}
+
+#game-container .standby .background-container .element-6 .inner-element-1 {
+    -webkit-transition: -webkit-transform 3s ease-in-out, visibility 3s ease-in-out;
+	-moz-transition: -moz-transform 3s ease-in-out, visibility 3s ease-in-out;
+	transition: transform 3s ease-in-out, visibility 3s ease-in-out;
+	-webkit-transform: translateY(0) translateZ(0);
+	-moz-transform: translateY(0) translateZ(0);
+	transform: translateY(0) translateZ(0);
+	visibility: visible;
+}
+#game-container .active .background-container .element-6 .inner-element-1 {
+	-webkit-transition: -webkit-transform 3s ease-in-out, visibility 3s ease-in-out 2s;
+	-moz-transition: -moz-transform 3s ease-in-out, visibility 3s ease-in-out 2s;
+	transition: transform 3s ease-in-out, visibility 3s ease-in-out 2s;
+	-webkit-transform: translateY(-250px) translateZ(0);
+	-moz-transform: translateY(-250px) translateZ(0);
+	transform: translateY(-250px) translateZ(0);
+	visibility: hidden;
+}
+
+#game-container .background-container .element-7 {
+    background: url("../images/dbgames_logo.png") no-repeat scroll center center transparent;
+    bottom: 15px;
+    height: 41px;
+    left: auto;
+    position: absolute;
+    right: 15px;
+    top: auto;
+    width: 59px;
+    -webkit-transition: opacity 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s;
+	opacity: 1;
+}
+
+#game-container .active .background-container .element-7 {
+	opacity: 0;
+}
+
+#game-container .background-container .element-8 {
+    background: url("../images/letters.png") no-repeat scroll center bottom transparent;
+    -webkit-transition: opacity 3s ease-in-out 2s;
+	-moz-transition: opacity 3s ease-in-out 2s;
+	transition: opacity 3s ease-in-out 2s;
+	opacity: 1;
+}
+
+#game-container .active .background-container .element-8 {
+	opacity: 0;
+}
+
+#game-container .game .standby-page-elements {
+	-webkit-transition: all 2s ease-out;
+	-moz-transition: all 2s ease-out;
+	transition: all 2s ease-out;
+}
+
+#game-container .game.standby .standby-page-elements {
+   	visibility: visible;
+}
+
+#game-container .game.active .standby-page-elements {
+   	visibility: hidden;
+}
+
+#game-container .game .active-page-elements {
+	bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+	z-index: 1;
+}
+
+#game-container .game.standby .active-page-elements .grid-container {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	transform: scale(1);
+    -webkit-animation: zoom-out 1.5s 1;
+	-moz-animation: zoom-out 1.5s 1;
+	animation: zoom-out 1.5s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	visibility: hidden;
+	-webkit-transition: visibility 3s ease-in-out;
+	-moz-transition: visibility 3s ease-in-out;
+	transition: visibility 3s ease-in-out;
+}
+
+#game-container .game.active .active-page-elements .grid-container {
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	transform: scale(0);
+    -webkit-animation: zoom-in 1.5s 2s 1;
+	-moz-animation: zoom-in 1.5s 2s 1;
+	animation: zoom-in 1.5s 2s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	visibility: visible;
+}
+
+#game-container .standby-page-elements .start-btn-wrapper {
+	width: 225px;
+	height: 115px;
+	position: absolute;
+	left: 50%;
+	bottom: 100px;
+	margin-left: -120px;
+	z-index: 100;
+	cursor: pointer;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	transform: scale(1);
+	-webkit-animation: zoom-in 2s 1;
+	-moz-animation: zoom-in 2s 1;
+	animation: zoom-in 2s 1;
+	cursor: pointer;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-perspective: 1000;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+#game-container .active .standby-page-elements .start-btn-wrapper {
+	-webkit-animation: zoom-out 1.5s 1;
+	-moz-animation: zoom-out 1.5s 1;
+	animation: zoom-out 1.5s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+#game-container .standby-page-elements .start-btn-wrapper .start-btn {
+	width: 225px;
+	height: 80px;
+	border-radius: 20px;
+	background: rgb(87,205,215);
+	background: -moz-linear-gradient(top,  rgba(87,205,215,1) 0%, rgba(6,162,164,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(87,205,215,1)), color-stop(99%,rgba(6,162,164,1)));
+	background: -webkit-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: -o-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: linear-gradient(to bottom,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	border: 1px solid #5DD0D1;
+	border-top: 0 none;
+	box-shadow: 3px 3px 15px rgba(255, 255, 255, 0.58) inset, -3px 3px 8px #30EEFF inset, 0 0 4px #026769, 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 40px 0 rgba(255, 255, 255, 0.1) inset;	
+	position: absolute;
+	top: 0;	
+	z-index: 11;
+	-webkit-animation: jump 1s infinite;
+	-moz-animation: jump 1s infinite;
+	animation: jump 1s infinite;
+	cursor: pointer;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-perspective: 1000;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+
+#game-container .standby-page-elements .start-btn-wrapper:hover .start-btn,
+#game-container .hint-container .next-question:hover,
+#game-container .helper .message .close-message:hover {
+	background: rgb(100,208,218);
+	background: -moz-linear-gradient(top,  rgba(100,208,218,1) 0%, rgba(7,188,191,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,208,218,1)), color-stop(99%,rgba(7,188,191,1)));
+	background: -webkit-linear-gradient(top,  rgba(100,208,218,1) 0%,rgba(7,188,191,1) 99%);
+	background: -o-linear-gradient(top,  rgba(100,208,218,1) 0%,rgba(7,188,191,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(100,208,218,1) 0%,rgba(7,188,191,1) 99%);
+	background: linear-gradient(to bottom,  rgba(100,208,218,1) 0%,rgba(7,188,191,1) 99%);
+}
+
+#game-container .standby-page-elements .start-btn-wrapper:active .start-btn,
+#game-container .hint-container .next-question:active,
+#game-container .helper .message .close-message:active {
+	background: rgb(68,199,210);
+	background: -moz-linear-gradient(top,  rgba(68,199,210,1) 0%, rgba(6,148,150,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(68,199,210,1)), color-stop(99%,rgba(6,148,150,1)));
+	background: -webkit-linear-gradient(top,  rgba(68,199,210,1) 0%,rgba(6,148,150,1) 99%);
+	background: -o-linear-gradient(top,  rgba(68,199,210,1) 0%,rgba(6,148,150,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(68,199,210,1) 0%,rgba(6,148,150,1) 99%);
+	background: linear-gradient(to bottom,  rgba(68,199,210,1) 0%,rgba(6,148,150,1) 99%);
+}
+
+#game-container .standby-page-elements .start-btn-wrapper .start-btn .btn-label {
+    bottom: 0;
+    color: #FFFFFF;
+    display: inline-block;
+	font-family: 'Luckiest Guy', cursive;
+    font-size: 52px;
+    left: 0;
+    line-height: 82px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 0 4px #091F21;
+    top: 0;
+    vertical-align: top;
+    -webkit-animation: text-shrink 1s infinite;
+	-moz-animation: text-shrink 1s infinite;
+	animation: text-shrink 1s infinite;
+}
+#game-container .standby-page-elements .start-btn-wrapper .start-btn-shadow {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	z-index: 10;
+	margin-left: -40px;
+	width: 100px;
+	height: 10px;
+	background: rgba(20, 20, 20, .1);
+	border-radius: 15px / 20px;
+	box-shadow: 0px 0 20px 20px rgba(20,20,20,.1);	
+	-webkit-animation: shrink 1s infinite;
+	-moz-animation: shrink 1s infinite;
+	animation: shrink 1s infinite;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-perspective: 1000;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	-webkit-transform: translateZ(0) scale(1);
+	-moz-transform: translateZ(0) scale(1);
+	transform: translateZ(0) scale(1);
+}
+
+#game-container .main-container {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+#game-container .hidden {
+	display: none;
+}
+
+#game-container .grid-container {
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 30px;
+    width: 524px;
+}
+
+#game-container .grid-container .reveal-wrapper {
+    background-position: center center;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#game-container .grid-container .reveal-wrapper.image1 {
+	background-image: url("../images/reward-images/1.png");
+}
+#game-container .grid-container .reveal-wrapper.image2 {
+	background-image: url("../images/reward-images/2.png");
+}
+#game-container .grid-container .reveal-wrapper.image3 {
+	background-image: url("../images/reward-images/3.png");
+}
+#game-container .grid-container .reveal-wrapper.image4 {
+	background-image: url("../images/reward-images/4.png");
+}
+#game-container .grid-container .reveal-wrapper.image5 {
+	background-image: url("../images/reward-images/5.png");
+}
+#game-container .grid-container .reveal-wrapper.image6 {
+	background-image: url("../images/reward-images/6.png");
+}
+
+#game-container .restart-btn {
+	visibility: hidden;
+	-webkit-transition: visibility 2s ease-in-out;
+	-moz-transition: visibility 2s ease-in-out;
+	transition: visibility 2s ease-in-out;
+}
+
+#game-container .game-over .restart-btn {
+	visibility: hidden;
+}
+
+#game-container .table-container {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 4px rgba(1, 1, 1, 0.5);
+    padding: 10px;
+    -webkit-transition: opacity 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out;
+	transition: opacity 2s ease-in-out;
+}
+
+#game-container .game-over .table-container {
+    opacity: 0;
+}
+
+#game-container table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    -webkit-transition: opacity 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out;
+	transition: opacity 2s ease-in-out;
+}
+
+#game-container .game-over table {
+    opacity: 0;
+}
+
+#game-container table td {
+    display: inline-block;
+    height: 63px;
+    position: relative;
+    vertical-align: top;
+    width: 63px;
+}
+
+#game-container table td.wrong-word {
+    -webkit-animation: wiggle 350ms 1.2s 4;
+	-moz-animation: wiggle 350ms 1.2s 4;
+	animation: wiggle 350ms 1.2s 4;
+}
+
+#game-container table td.right-word {
+    -webkit-animation: zoom-out 1.5s 1s 1;
+	-moz-animation: zoom-out 1.5s 1s 1;
+	animation: zoom-out 1.5s 1s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+#game-container table tr:nth-child(2n+1) td:nth-child(2n) .flip-wrapper .front {
+    background: none repeat scroll 0 0 #093565;
+}
+#game-container table tr:nth-child(2n) td:nth-child(n) .flip-wrapper .front {
+    background: none repeat scroll 0 0 #093565;
+}
+#game-container table tr:nth-child(2n) td:nth-child(2n) .flip-wrapper .front {
+    background: none repeat scroll 0 0 #16569C;
+}
+
+#game-container .animation-container {
+    bottom: 0;
+    left: 0;
+	-moz-perspective: 1000;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#game-container .highlight-problem .animation-container {
+    box-shadow: 0 0 4px #FFFFFF, 0 0 4px #FFFFFF;
+	z-index: 10;
+}
+
+#game-container .flip-wrapper {
+    height: 100%;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    width: 100%;
+}
+
+#game-container .flip-wrapper .front,
+#game-container .flip-wrapper .back {
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+#game-container .flip-wrapper .front {
+	background: none repeat scroll 0 0 #16569C;
+}
+
+#game-container .flip-wrapper.flipped {
+    -webkit-animation: flip 1.5s 330ms 1;
+	-moz-animation: flip 1.5s 330ms 1;
+	animation: flip 1.5s 330ms 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	-ms-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+#game-container .flip-wrapper .back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+#game-container .flip-wrapper .back.right-letter {
+	background: rgb(182,247,0);
+	background: -moz-linear-gradient(top,  rgba(182,247,0,1) 0%, rgba(66,125,13,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(182,247,0,1)), color-stop(100%,rgba(66,125,13,1)));
+	background: -webkit-linear-gradient(top,  rgba(182,247,0,1) 0%,rgba(66,125,13,1) 100%);
+	background: -o-linear-gradient(top,  rgba(182,247,0,1) 0%,rgba(66,125,13,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(182,247,0,1) 0%,rgba(66,125,13,1) 100%);
+	background: linear-gradient(to bottom,  rgba(182,247,0,1) 0%,rgba(66,125,13,1) 100%);
+}
+
+#game-container .flip-wrapper .back.wrong-letter {
+	background: rgb(248,0,29);
+	background: -moz-linear-gradient(top,  rgba(248,0,29,1) 0%, rgba(125,30,13,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(248,0,29,1)), color-stop(100%,rgba(125,30,13,1)));
+	background: -webkit-linear-gradient(top,  rgba(248,0,29,1) 0%,rgba(125,30,13,1) 100%);
+	background: -o-linear-gradient(top,  rgba(248,0,29,1) 0%,rgba(125,30,13,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(248,0,29,1) 0%,rgba(125,30,13,1) 100%);
+	background: linear-gradient(to bottom,  rgba(248,0,29,1) 0%,rgba(125,30,13,1) 100%);
+}
+
+#game-container .flip-wrapper .back .wrong-letter > span {
+    text-shadow: 2px 2px #63130A;
+}
+
+#game-container .flip-wrapper .back .right-letter > span {
+    text-shadow: 2px 2px #406A0E;
+}
+
+#game-container .drag {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#game-container .drop {
+	cursor:move;
+	height:61.5px;
+	opacity:1;
+	width:61.5px;
+}
+
+#game-container .helper {
+    background: none repeat scroll 0 0 rgba(1, 1, 1, 0.2);
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+#game-container .active .helper.inactive {
+	-webkit-transition: all 1s ease-out;
+	-moz-transition: all 1s ease-out;
+	transition: all 1s ease-out;
+}
+#game-container .helper.inactive {
+    background: none repeat scroll 0 0 transparent;
+    z-index: 0;
+}
+#game-container .standby .helper {
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+#game-container .active .helper {
+	-webkit-transition: all 1s ease-in-out 4.5s;
+	-moz-transition: all 1s ease-in-out 4.5s;
+	transition: all 1s ease-in-out 4.5s;
+	visibility: visible;
+	opacity: 1;
+}
+#game-container .active.game-over .helper {
+	-webkit-transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#game-container .helper .message {
+    background: none repeat scroll 0 0 #07898B;
+    border: 11px solid #19D4D7;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 15px rgba(1, 1, 1, 0.8);
+    color: #FFFFFF;
+    cursor: default;
+    font-size: 24px;
+    left: 198px;
+    padding: 14px 20px;
+    position: absolute;
+    text-shadow: 0 0 4px #03302F;
+    top: 100px;
+    width: 485px;
+}
+
+#game-container .helper.inactive .message {
+    -webkit-animation: zoom-out 1.5s 1;
+	-moz-animation: zoom-out 1.5s 1;
+	animation: zoom-out 1.5s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+#game-container .helper .message > p {
+    line-height: 32px;
+    margin: 8px 0 20px;
+}
+
+#game-container .helper .message .btn-label {
+    color: #FFFFFF;
+    font-family: 'Luckiest Guy',cursive;
+    font-size: 42px;
+    text-align: center;
+    text-shadow: 0 0 4px #091F21;
+}
+
+#game-container .helper .message .close-message {
+	background: rgb(87,205,215);
+	background: -moz-linear-gradient(top,  rgba(87,205,215,1) 0%, rgba(6,162,164,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(87,205,215,1)), color-stop(99%,rgba(6,162,164,1)));
+	background: -webkit-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: -o-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: linear-gradient(to bottom,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	border: 1px solid #5DD0D1;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 3px 3px 15px rgba(255, 255, 255, 0.58) inset, -3px 3px 8px #30EEFF inset, 0 0 4px #026769, 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 40px 0 rgba(255, 255, 255, 0.1) inset;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+
+#game-container .helper-character,
+#game-container .helper-character .element-1 {
+    background: url("../images/db_bears.png") no-repeat scroll 0 0 transparent;
+    bottom: 98px;
+    height: 332px;
+    left: 0;
+    position: absolute;
+    width: 219px;
+}
+#game-container .helper-character .element-1 {
+    background-position: -219px 0;
+    bottom: 0;
+    left: 0;
+}
+
+#game-container .helper .score {
+    bottom: 111px;
+    color: #FFFFFF;
+    cursor: default;
+    font-family: 'Luckiest Guy',cursive;
+    font-size: 28px;
+    left: 54px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 0 3px rgba(1, 1, 1, 0.6);
+    width: 80px;
+}
+
+#game-container .tiles-wrapper {
+    bottom: 30px;
+    left: 50%;
+    margin-left: -350px;
+    position: absolute;
+    text-align: center;
+    width: 685px;
+	opacity: 1;
+}
+#game-container .standby .tiles-wrapper {
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+#game-container .active .tiles-wrapper {
+	-webkit-transition: all 1s ease-in-out 3.5s;
+	-moz-transition: all 1s ease-in-out 3.5s;
+	transition: all 1s ease-in-out 3.5s;
+	visibility: visible;
+	opacity: 1;
+}
+#game-container .active.game-over .tiles-wrapper {
+	-webkit-transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#game-container .player-tiles {
+    background: url("../images/ball.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: $userFont;
+    font-size: 26px;
+    height: 56px;
+    line-height: 44px;
+    margin-bottom: -6px;
+    margin-right: -16px;
+    opacity: 1;
+    position: relative;
+    text-align: center;
+    text-indent: -6px;
+    width: 60px;
+    z-index: 10;
+}
+
+#game-container .occupied .player-tiles {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 54px;
+    line-height: 54px;
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+}
+
+#game-container .player-tiles:hover {
+    background-position: -57px 0;
+}
+#game-container .player-tiles.two {
+	background-position: 0 -56px;
+}
+#game-container .player-tiles.two:hover {
+	background-position: -57px -56px;
+}
+
+#game-container .game-over-elements {
+    bottom: 40px;
+    left: 50%;
+    margin-left: -150px;
+    position: absolute;
+    text-align: center;
+    width: 300px;
+    -webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+	visibility: visible;
+}
+
+#game-container .standby .game-over-elements {
+	opacity: 0;
+	visibility: hidden;
+}
+
+#game-container .bg-music-controls-wrapper {
+    left: 20px;
+    position: absolute;
+    top: 20px;
+    z-index: 99;
+    opacity: 1;
+    -webkit-transition: opacity 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out;
+	transition: opacity 2s ease-in-out;
+}
+
+#game-container .active .bg-music-controls-wrapper {
+	opacity: 0
+}
+
+#game-container .replay-sound {
+    bottom: -16px;
+    position: absolute;
+    right: -13px;
+    z-index: 1;
+}
+
+#game-container .background-music,
+#game-container .replay-sound {
+	background: rgb(22,87,156);
+	background: -moz-linear-gradient(top,  rgba(22,87,156,1) 0%, rgba(9,53,101,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(22,87,156,1)), color-stop(99%,rgba(9,53,101,1)));
+	background: -webkit-linear-gradient(top,  rgba(22,87,156,1) 0%,rgba(9,53,101,1) 99%);
+	background: -o-linear-gradient(top,  rgba(22,87,156,1) 0%,rgba(9,53,101,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(22,87,156,1) 0%,rgba(9,53,101,1) 99%);
+	background: linear-gradient(to bottom,  rgba(22,87,156,1) 0%,rgba(9,53,101,1) 99%);
+	border: 1px solid #306FB1;
+	border-radius: 100%;
+    box-shadow: 1px 1px 8px rgba(255, 255, 255, 0.58) inset, -1px 1px 4px #185698 inset, 0 0 3px #093565, 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 19px 0 rgba(255, 255, 255, 0.08) inset;
+    cursor: pointer;
+    height: 48px;
+    width: 48px;
+}
+
+#game-container .background-music:hover,
+#game-container .background-music.paused:hover,
+#game-container .replay-sound:hover {
+	background: rgb(26,104,188);
+	background: -moz-linear-gradient(top,  rgba(26,104,188,1) 0%, rgba(13,75,141,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(26,104,188,1)), color-stop(99%,rgba(13,75,141,1)));
+	background: -webkit-linear-gradient(top,  rgba(26,104,188,1) 0%,rgba(13,75,141,1) 99%);
+	background: -o-linear-gradient(top,  rgba(26,104,188,1) 0%,rgba(13,75,141,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(26,104,188,1) 0%,rgba(13,75,141,1) 99%);
+	background: linear-gradient(to bottom,  rgba(26,104,188,1) 0%,rgba(13,75,141,1) 99%);
+}
+
+#game-container .background-music:active,
+#game-container .background-music.paused,
+#game-container .replay-sound:active {
+	background: rgb(20,77,138);
+	background: -moz-linear-gradient(top,  rgba(20,77,138,1) 0%, rgba(8,48,90,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(20,77,138,1)), color-stop(99%,rgba(8,48,90,1)));
+	background: -webkit-linear-gradient(top,  rgba(20,77,138,1) 0%,rgba(8,48,90,1) 99%);
+	background: -o-linear-gradient(top,  rgba(20,77,138,1) 0%,rgba(8,48,90,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(20,77,138,1) 0%,rgba(8,48,90,1) 99%);
+	background: linear-gradient(to bottom,  rgba(20,77,138,1) 0%,rgba(8,48,90,1) 99%);
+}
+
+#game-container .background-music.paused {
+	box-shadow: 2px 2px 8px rgba(1, 1, 1, 0.78) inset, 1px -1px 4px #185698 inset, 0 0 3px #093565, 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 19px 0 rgba(1, 1, 1, 0.1) inset;
+}
+
+#game-container .background-music .icon,
+#game-container .replay-sound .icon {
+    background: url("../images/sound_icons.png") no-repeat scroll -7px -2px transparent;
+    border-radius: 100% 100% 100% 100%;
+    display: block;
+    height: 53px;
+    width: 53px;
+}
+#game-container .background-music.paused .icon {
+    background-position: -66px -2px;
+}
+
+#game-container .hint-container {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+	opacity: 1;
+}
+#game-container .standby .hint-container {
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	transition: all 500ms ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+#game-container .active .hint-container {
+	-webkit-transition: all 500ms ease-in-out 4.1s;
+	-moz-transition: all 500ms ease-in-out 4.1s;
+	transition: all 500ms ease-in-out 4.1s;
+	visibility: visible;
+	opacity: 1;
+}
+#game-container .active.game-over .hint-container {
+	-webkit-transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#game-container .next-question {
+	background: rgb(87,205,215);
+	background: -moz-linear-gradient(top,  rgba(87,205,215,1) 0%, rgba(6,162,164,1) 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(87,205,215,1)), color-stop(99%,rgba(6,162,164,1)));
+	background: -webkit-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: -o-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: -ms-linear-gradient(top,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	background: linear-gradient(to bottom,  rgba(87,205,215,1) 0%,rgba(6,162,164,1) 99%);
+	border: 1px solid #5DD0D1;
+	border-top: 0 none;
+	border-radius: 12px;
+    box-shadow: 3px 3px 15px rgba(255, 255, 255, 0.58) inset, -3px 3px 8px #30EEFF inset, 0 0 4px #026769, 1px 0 0 rgba(255, 255, 255, 0.3) inset, 0 40px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: 'Luckiest Guy',cursive;
+    font-size: 25px;
+    padding: 6px 10px;
+    position: absolute;
+	right: 0;
+    text-align: center;
+    text-shadow: 0 0 4px #091F21;
+    top: 60px;
+    visibility: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    z-index: 0;
+    -moz-transition: all 1s ease-in-out 0s;
+    -webkit-transition: all 1s ease-in-out 0s;
+    transition: all 1s ease-in-out 0s;
+}
+
+#game-container .next-question.move-down {
+    top: 180px;
+    opacity: 1;
+    visibility: visible;
+}
+
+#game-container .hint-img-wrapper {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 4px rgba(1, 1, 1, 0.5);
+    height: 135px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 135px;
+}
+#game-container .hint-img-wrapper:after {
+    bottom: 10px;
+    box-shadow: 0 0 2px rgba(1, 1, 1, 0.8) inset;
+    content: " ";
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+#game-container .hint-img-wrapper .pic-hint {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: auto;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}

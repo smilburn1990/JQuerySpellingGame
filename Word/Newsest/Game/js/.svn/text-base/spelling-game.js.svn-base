@@ -1,0 +1,394 @@
+$(document).ready(function () {
+    var listOfWords = [];
+    var rndWord = [];
+    var numberToComplete = $('#numberToComplete').val();
+    var xAxis = $('.xAxis').val();
+    var yAxis = $('.yAxis').val();
+    var score = {
+        right: 0,
+        wrong: 0
+    };
+    var wordlist = $("#wordlist");
+    var wordsData = [];
+    var tempWords = wordlist.find('li');
+    var populationAmount = $('#populationAmount').val(); 
+    if (wordlist.find('li').length >= populationAmount) {
+        var indexs = [],
+            index;
+        while (populationAmount) {
+            index = Math.floor(Math.random() * tempWords.length);
+            if ($.inArray(index, indexs) === -1) {
+                indexs.push(index);
+                wordsData.push(tempWords[index]);
+                populationAmount--;
+            }
+        }
+    } else {
+        wordsData = tempWords;
+    }
+    $(document).ready(function () {
+    bgImageTotal = 5;
+    randomNumber = Math.round(Math.random() * (bgImageTotal - 1)) + 1;
+    $('.reveal-wrapper').addClass('image' + randomNumber);
+});
+    $(wordsData).each(function () {
+        var elm = $(this);
+        listOfWords.push({
+            "name": elm.data("word"),
+            "pic": elm.data("pic"),
+            "audio": elm.data("audio")
+        });
+    });
+    var chosenWords = $(wordsData).get().sort(function () {
+        return Math.round(Math.random()) - 0.5
+    }).slice(0, 2);
+    var copylist = listOfWords.slice();
+    for (var x = 0; x < listOfWords.length; x++) {
+        var rand = Math.floor(Math.random() * (copylist.length));
+        chosenWords.push(copylist[rand].name);
+        copylist.splice(rand, 1);
+        if (chosenWords.length < 12) {
+            chosenWords.push('   ');
+        }
+    }
+    var shuffledWords = [];
+    shuffledWords = chosenWords.sort(function () {
+        return 0.5 - Math.random()
+    });
+    var unusedShuffledWords = shuffledWords.slice();
+
+    function getXSpaces(numOfSpaces) {
+        var answer = "";
+        for (var i = 0; i < numOfSpaces; i++) {
+            answer += " ";
+        }
+        return answer;
+    }
+
+    function getWordToFitIn(spaceAvail, wordlist) {
+        var foundIndex = -1;
+        var answer = _.find(wordlist, function (word, index) {
+            if (word.length <= spaceAvail) {
+                foundIndex = index;
+                return true;
+            }
+        });
+        if (foundIndex == -1) {
+            answer = getXSpaces(spaceAvail);
+            _.find(wordlist, function (word, index) {
+                if (word[0] == " ") {
+                    foundIndex = index;
+                    return true;
+                }
+            });
+        }
+        if (foundIndex != -1) {
+            wordlist.splice(foundIndex, 1);
+        }
+        return answer;
+    }
+    var guesses = {};
+    var tbl = $('<table></table>');
+    var numRows = yAxis;
+    var numLetters = xAxis;
+    for (var i = 0; i < numRows; i++) {
+        if (unusedShuffledWords.length == 0) {
+            break;
+        }
+        var row = '<tr>';
+        var spaceAvailInRow = numLetters;
+        while (spaceAvailInRow) {
+            var word = getWordToFitIn(spaceAvailInRow, unusedShuffledWords);
+            guesses[word] = [];
+            spaceAvailInRow -= word.length;
+            for (var k = 0; k < word.length; ++k) {
+                row += '<td data-letter="' + word[k] + '" data-word="' + word + '"><div class="animation-container"><div class="flip-wrapper"><div class="front"></div><div class="back drop-box"></div></div></div></td>';
+            }
+        }
+        row += '</tr>';
+        tbl.append(row);
+    }
+    $(".table-container").append(tbl);
+    $(".start-btn-wrapper").click(function () {
+        startplay();
+        $(bgMusic).on('timeupdate', function () {
+            var vol = 1,
+                interval = 250;
+            if (bgMusic.volume == 1) {
+                var intervalID = setInterval(function () {
+                    if (vol > 0) {
+                        vol -= 0.05;
+                        bgMusic.volume = vol.toFixed(2);
+                    } else {
+                        clearInterval(intervalID);
+                    }
+                }, interval);
+            }
+        });
+    });
+
+    function startplay() {
+        $('.game').removeClass("standby").addClass('active').addClass('transition');
+        $(".start-btn-wrapper");
+        $('.game').removeClass('transition');
+    }
+    $(".restart-btn").click(function () {
+        restartplay();
+        bgMusic.play();
+    });
+
+    function restartplay() {
+        $('.game').removeClass("active").addClass('standby').addClass('transition');
+        $(".restart-btn");
+        setTimeout(function () {
+            $('.game').removeClass('transition');
+        }, 10000);
+    }
+    var right = $(".right");
+    var wrong = $(".wrong");
+    var successSound = $("#successSound")[0];
+    var failSound = $("#failSound")[0];
+    var moveSound = $("#moveSound")[0];
+    var hitSound = $("#hitSound")[0];
+    var missSound = $("#missSound")[0];
+    var hintSound = $("#hintSound")[0];
+    var hintPic = $("#hintPic")[0];
+    var animation = false;
+$('.drag').on('click', function (e) {
+        e.preventDefault();
+        if (animation) return;
+        moveSound.play();
+        var target = $('.highlight-problem .drop-box:not(.occupied):first');
+        var targetPos = target.parents('td').position();
+        console.log(targetPos);
+        var currentPos = $(this).offset();
+        var b = $(this);
+        if (target.length) {
+            target.addClass("occupied");
+            $(".occupied").parent(".flip-wrapper").addClass("flipped");
+            animation = true;
+            var clonedObject = b.clone()
+            if (b.data("letter") == target.parents('td').data("letter")) {
+                clonedObject.addClass("right-letter");
+                target.addClass('right-letter');
+                setTimeout(function () {
+                    hitSound.play();
+                }, 550);
+            } else {
+                clonedObject.addClass("wrong-letter");
+                target.addClass('wrong-letter');
+                setTimeout(function () {
+                    missSound.play();
+                }, 550);
+            }
+            clonedObject.appendTo("table").css({
+                position: "absolute",
+                top: currentPos.top,
+                left: currentPos.left
+            }).animate({
+                top: targetPos.top,
+                left: targetPos.left
+            }, "slow", function () {
+                animation = false;
+                $(this).css({
+                    top: 0,
+                    left: 0
+                }).appendTo(target);
+                var spellWord = $('.highlight-problem .drop-box');
+                if (!spellWord.filter(':not(.occupied)').length) {
+                    var wordIsCorrect = 0;
+                    spellWord.each(function () {
+                        if ($(this).parents('td').data("letter") == $(this).find("div").data("letter")) {
+                            console.log('letter is: ' + $(this).find("div").data("letter"))
+                            wordIsCorrect++;
+                        }
+                    });
+                    console.log(spellWord.length + ' , ' + wordIsCorrect);
+                    if (spellWord.length == wordIsCorrect) {
+                        spellWord.closest('td').addClass('right-word');
+                        $(right).css('visibility', 'visible');
+                        $(wrong).css('visibility', 'hidden');
+                        score.right++;
+                        score.wrong = 0;
+                        $('.score').html(score.right + "/" + numberToComplete).show();
+                        setTimeout(function () {
+                            successSound.play();
+                        }, 200);
+                        if (score.right == numberToComplete) {
+                            $('.end-message').show('html');
+                            $('.end-message').html("Well done! </br></br> You correctly </br></br> spelt " + score.right + " words. </br></br> Keep it up.").show();
+                            $('.game').addClass('game-over');
+                            $('.restart-btn').css('visibility', 'visible');
+                        }
+                        setTimeout(function () {
+                            $('.next-question').trigger('click');
+                            $(right).css('visibility', 'hidden');
+                        }, 1500);
+                    } else {
+                        spellWord.closest('td').addClass('wrong-word');
+                        $(wrong).css('visibility', 'visible');
+                        setTimeout(function () {
+                            failSound.play();
+                        }, 200);
+                        $(right).css('visibility', 'hidden');
+                        score.wrong++;
+                        if (score.wrong == 3) {
+                            score.wrong = 0;
+                            setTimeout(function () {
+                                $(".next-question").toggleClass('move-down');
+                            }, 1500);                           
+                        }
+                        $('.drag').on('click', function (e) {
+                                $(".next-question").removeClass('move-down'); 
+                            });
+                        setTimeout(function () {
+                            $(".occupied").parent(".flip-wrapper").removeClass('flipped');
+                            $(wrong).css('visibility', 'hidden');
+                            $('.highlight-problem .drop-box').removeClass('occupied').removeClass('wrong-letter').removeClass('right-letter').html('');
+                            spellWord.closest('td').removeClass('wrong-word');
+                            
+                        }, 2500);
+                    }
+                }
+            });
+        }
+    });
+    var bgMusic = $('#audio-bg')[0],
+        playing = true;
+    bgMusic.addEventListener('ended', function () {
+        this.currentTime = 0;
+        if (playing) {
+            this.play();
+        }
+    }, false);
+    bgMusic.play();
+    $('.background-music').click(function () {
+        if (!bgMusic.paused) {
+            bgMusic.pause();
+            playing = false;
+            $('#play').toggleClass("paused");
+        } else {
+            bgMusic.play();
+            playing = true;
+            $('#play').toggleClass("paused");
+        }
+    });
+    $('.next-question').click(function () {
+        $('.next-question').prop('disabled', false);
+        $('.pic-hint').show();
+        $('td').removeClass('highlight-problem');
+        var r = rndWord;
+        while (r == rndWord) {
+            rndWord = Math.floor(Math.random() * (listOfWords.length));
+        }
+        $('td[data-word="' + listOfWords[rndWord].name + '"]').addClass('highlight-problem');
+        $('td[data-word=' + word + ']').removeClass('wrong-letter').removeClass('wrong-word').removeClass('right-letter');
+        var noExist = $('td[data-word=' + listOfWords[rndWord].name + ']').hasClass('right-word');
+        if (noExist) {
+            $('.next-question').prop('disabled', false);
+        } else {
+            $("#hintSound").attr('src', listOfWords[rndWord].audio);
+            hintSound.play();
+            $("#hintPic").attr('src', listOfWords[rndWord].pic);
+            $(hintPic).show();
+        }
+    });
+    $('.close-message').click(function () {
+        $('.next-question').prop('disabled', false);
+        $('.helper').addClass('inactive');
+        $('.pic-hint').show();
+        $('td').removeClass('highlight-problem');
+        var r = rndWord;
+        while (r == rndWord) {
+            rndWord = Math.floor(Math.random() * (listOfWords.length));
+        }
+        $('td[data-word="' + listOfWords[rndWord].name + '"]').addClass('highlight-problem');
+        $('td[data-word=' + word + ']').removeClass('wrong-letter').removeClass('wrong-word').removeClass('right-letter');
+        var noExist = $('td[data-word=' + listOfWords[rndWord].name + ']').hasClass('right-word');
+        if (noExist) {
+            $('.next-question').prop('disabled', false);
+        } else {
+            $("#hintSound").attr('src', listOfWords[rndWord].audio);
+            hintSound.play();
+            $("#hintPic").attr('src', listOfWords[rndWord].pic);
+            $(hintPic).show();
+        }
+    });
+    $(".replay-sound").click(function () {
+        var noExist = $('td[data-word=' + listOfWords[rndWord].name + ']').hasClass('right-word');
+        if (noExist) {
+            $('.replay-sound').prop('disabled', false);
+        } else {
+            $("#hintSound").attr('src', listOfWords[rndWord].hintSound);
+            hintSound.play();
+        }
+    });
+    $("#drag1").mouseover(function () {});
+    $("#drag2").mouseover(function () {});
+    $("#drag3").mouseover(function () {});
+    $("#drag4").mouseover(function () {});
+    $("#drag5").mouseover(function () {});
+    $("#drag6").mouseover(function () {});
+    $("#drag7").mouseover(function () {});
+    $("#drag8").mouseover(function () {});
+    $("#drag9").mouseover(function () {});
+    $("#drag10").mouseover(function () {});
+    $("#drag11").mouseover(function () {});
+    $("#drag12").mouseover(function () {});
+    $("#drag13").mouseover(function () {});
+    $("#drag14").mouseover(function () {});
+    $("#drag15").mouseover(function () {});
+    $("#drag16").mouseover(function () {});
+    $("#drag17").mouseover(function () {});
+    $("#drag18").mouseover(function () {});
+    $("#drag19").mouseover(function () {});
+    $("#drag20").mouseover(function () {});
+    $("#drag21").mouseover(function () {});
+    $("#drag22").mouseover(function () {});
+    $("#drag23").mouseover(function () {});
+    $("#drag24").mouseover(function () {});
+    $("#drag25").mouseover(function () {});
+    $("#drag26").mouseover(function () {});
+});
+$(document).keypress(function (e) {
+    if (e.which >= 97 && e.which <= 122) {
+        letter = String.fromCharCode(e.which);
+        $(".drag[data-letter='" + letter + "']").trigger('click');
+    }
+});
+var channels = new Array();
+
+function setup() {
+    var maxChannels = 10;
+    for (var i = 0; i < maxChannels; i++) {
+        channels[i] = new Array();
+        channels[i]['channel'] = new Audio();
+        channels[i]['finished'] = -1;
+    }
+}
+
+function play(jQueryElem) {
+    if (!jQueryElem[0]) {
+        alert("Err: " + jQueryElem + " ? " + jQueryElem[0]);
+        return;
+    }
+    var elem = jQueryElem[0];
+    for (var i = 0; i < channels.length; i++) {
+        var thistime = new Date();
+        if (channels[i]['finished'] < thistime.getTime()) {
+            channels[i]['finished'] = thistime.getTime() + elem.duration * 1000;
+            channels[i]['channel'].src = elem.src;
+            channels[i]['channel'].load();
+            channels[i]['channel'].play();
+            break;
+        }
+    }
+}
+$(document).ready(function () {
+    setup();
+    $('a.playsomething').click(function (e) {
+        var idToPlay = $(this).data('toplay');
+        play($('#' + idToPlay));
+        e.preventDefault();
+    });
+});

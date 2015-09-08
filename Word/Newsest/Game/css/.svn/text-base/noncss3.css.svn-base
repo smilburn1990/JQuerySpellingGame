@@ -1,0 +1,22 @@
+#game-container .helper.inactive .message {
+	display: none;
+}
+#game-container table td .flip-wrapper .front {
+    display: none;
+}
+#game-container table td * {
+	background: #093565;
+	height: 100%;
+	width: 100%;
+}
+#game-container table td.highlight-problem * {
+	background: #16569C;
+}
+#game-container table td.highlight-problem .flip-wrapper .back span {
+	background: transparent !important;
+}
+#game-container table td.right-word,
+#game-container table td.highlight-word.right-word,
+#game-container table td.highlight-problem.active.right-word {
+	visibility: hidden;
+}
