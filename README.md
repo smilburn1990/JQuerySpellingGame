@@ -1,27 +1,39 @@
-Synopsis -
 
-This project is a spelling game created for children
+#JQuery Spelling Game
 
-Motivation -
+This project is an interactive spelling game created for key stage 2 children. I was set the challenge in my placement year from university when I worked for an educational software company.
 
-A task given to me on my placement year by my employer
+#Contributors
 
-API Reference -
+Sean Milburn
+James Toone
+
+#Requirements
 
 N/A
 
-Libraries -
+#Instructions
+
+-download project files
+-run locally
+
+#Libraries 
 
 JQuery
 
-Contributors -
+#External resources
 
-Sean Milburn
+N/A
 
-Browser compatibility -
+#Styling
+
+CSS3
+
+#Plugins
+
+N/A
+
+#Browser compatibility
 
 Edge, Firefox, Chrome
 
-License -
-
-N/A
