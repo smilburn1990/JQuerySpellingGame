@@ -5,7 +5,7 @@ This project is an interactive spelling game created for key stage 2 children. I
 
 #Contributors
 
-Sean Milburn
+Sean Milburn<br>
 James Toone
 
 #Requirements
